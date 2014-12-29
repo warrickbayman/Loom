@@ -1,0 +1,24 @@
+{
+    "name": "warrickbayman/loom",
+    "description": "A simple way to work with units of time.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Warrick Bayman",
+            "email": "me@warrickbayman.co.za",
+            "homepage": "https://github.com/warrickbayman"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.2"
+    },
+    "autoload": {
+        "psr-0": {
+            "Loom": "src"
+        }
+    }
+}
