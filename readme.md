@@ -1,7 +1,8 @@
 # Loom
 
-[![image](http://img.shields.io/travis/warrickbayman/Loom.svg?style=flat)](https://travis-ci.org/warrickbayman/Incus)
-[![image](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/mit)
+[![GitHub version](https://img.shields.io/github/tag/warrickbayman/loom.svg?style=flat-square&label=stable)]()
+[![Build Status](https://img.shields.io/travis/warrickbayman/Loom.svg?style=flat-square)](https://travis-ci.org/warrickbayman/Loom)
+[![image](http://img.shields.io/packagist/l/warrickbayman/loom.svg?style=flat-square)](http://opensource.org/licenses/mit)
 
 Loom is a super simple way to work with units of time (hours, minutes, seconds, etc).
 
