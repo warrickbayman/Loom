@@ -171,6 +171,22 @@ $loom1->lte($loom2);		// true
 
 It is important which object you call the comparison methods on. The object you call on is always on the left of theequasion.
 
+### Simple Arithmetic
+
+You can also perform some simple arithmetic through the `add()` and `sub()` methods:
+
+```php
+	$loom = Loom::make()->fromMinutes(2);
+	$loom->add(Loom::make()->fromSeconds(30));
+	var_dump($loom->getSeconds())		// 150
+	
+	$loom->sub(Loom::make()->fromHours(1);
+	var_dump($loom->getMilliseconds);		// 0
+```
+
+A `Loom` object can never have a negative value. Subtracting a larger Loom from a smaller one will always result in 0.
+
+
 ## Tests
 
 Oh yes. Loom is 100% covered! You can run the tests from the `warrickbayman/loom` directory once installed:

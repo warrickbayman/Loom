@@ -95,4 +95,18 @@ class FabricTest extends TestCase
         $this->assertTrue($loom_two->gte($loom_three));
         $this->assertTrue($loom_three->lte($loom_two));
     }
+
+
+    /** @test */
+    public function it_can_perform_simple_arithmetic()
+    {
+        $loom = Loom::make()->fromMinutes(2);
+        $loom->add(Loom::make()->fromSeconds(10));
+
+        $this->assertEquals(130, $loom->getSeconds());
+
+        $loom->sub(Loom::make()->fromHours(1));
+        $this->assertEquals(0, $loom->getMinutes());
+
+    }
 }
