@@ -6,7 +6,7 @@
 Loom is a super simple way to work with units of time (hours, minutes, seconds, etc).
 
 ## Installation
-Install Loom via Composer, but adding to the `requires` section of your `composer.json` file.
+Install Loom via Composer, by adding to the `requires` section of your `composer.json` file.
 
 ```json
 {
