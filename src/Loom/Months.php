@@ -13,6 +13,16 @@ namespace Loom;
 
 class Months extends AbstractUnit
 {
+    private $daysPerMonth = null;
+
+    public function __construct($value, $daysPerMonth = null)
+    {
+        parent::__construct($value);
+
+        $this->daysPerMonth = $daysPerMonth;
+    }
+
+
     /**
      * Return the months in milliseconds
      *
@@ -20,6 +30,6 @@ class Months extends AbstractUnit
      */
     public function toMilliseconds()
     {
-        return $this->value * (365 / 12) * 24 * 60 * 60 * 1000;
+        return $this->value * (is_null($this->daysPerMonth) ? 365 / 12 : $this->daysPerMonth) * 24 * 60 * 60 * 1000;
     }
 }

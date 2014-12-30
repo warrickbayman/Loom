@@ -10,9 +10,11 @@
 
 namespace Loom;
 
+use Loom\Contracts\ArithmeticContract;
 use Loom\Contracts\ComparisonsContract;
 use Loom\Contracts\LoomContract;
 use Loom\Contracts\TranslatersContract;
+use Loom\Traits\LoomArithmetic;
 use Loom\Traits\LoomComparisons;
 use Loom\Traits\LoomTranslaters;
 
@@ -21,14 +23,14 @@ use Loom\Traits\LoomTranslaters;
  *
  * @package Loom
  */
-class Loom implements LoomContract, TranslatersContract, ComparisonsContract
+class Loom implements LoomContract, TranslatersContract, ComparisonsContract, ArithmeticContract
 {
     /**
      * @var int
      */
     private $ms = 0;
 
-    use LoomTranslaters, LoomComparisons;
+    use LoomTranslaters, LoomComparisons, LoomArithmetic;
 
     /**
      * Loom
@@ -42,19 +44,12 @@ class Loom implements LoomContract, TranslatersContract, ComparisonsContract
 
 
     /**
-     * Get the difference between
+     * Make a new LoomFactory instance
      *
-     * @param Loom $fabric
-     *
-     * @return Loom
+     * @return LoomFactory
      */
-    public function diff(Loom $fabric)
+    public static function make()
     {
-        $diff = $fabric->getMilliseconds() - $this->ms;
-        if ($diff < 0) {
-            $diff = -$diff;
-        }
-
-        return new Loom(new Milliseconds($diff));
+        return new LoomFactory();
     }
 }

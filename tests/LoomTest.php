@@ -29,6 +29,46 @@ class FabricTest extends TestCase
         $loom = new Loom(new \Loom\Years(1));
         $this->assertEquals(12, $loom->getMonths());
         $this->assertEquals(365, $loom->getDays());
+
+        $loom = new Loom(new \Loom\Days(2));
+        $this->assertEquals(48, $loom->getHours());
+    }
+
+
+    public function getFactory()
+    {
+        return [[new \Loom\LoomFactory()]];
+    }
+
+    /** @test
+     * @dataProvider getFactory
+     */
+    public function it_can_be_instantiated_using_the_factory(\Loom\LoomFactory $loomFactory)
+    {
+        $loom = $loomFactory->fromMilliseconds(5000);
+        $this->assertEquals(5, $loom->getSeconds());
+        $loom = $loomFactory->fromSeconds(240);
+        $this->assertEquals(240000, $loom->getMilliseconds());
+        $loom = $loomFactory->fromMinutes(8);
+        $this->assertEquals(480, $loom->getSeconds());
+        $loom = $loomFactory->fromHours(12);
+        $this->assertEquals(0.5, $loom->getDays());
+        $loom = $loomFactory->fromDays(7);
+        $this->assertEquals(1, $loom->getWeeks());
+        $loom = $loomFactory->fromWeeks(4);
+        $this->assertEquals(28, $loom->getDays());
+        $loom = $loomFactory->fromMonths(12);
+        $this->assertEquals(1, $loom->getYears());
+        $loom = $loomFactory->fromYears(2);
+        $this->assertEquals(24, $loom->getMonths());
+    }
+
+    /** @test */
+    public function it_can_be_instantiated_using_the_static_loom_method()
+    {
+        $loom = Loom::make()->fromSeconds(120);
+        $this->assertInstanceOf('Loom\Loom', $loom);
+        $this->assertEquals(2, $loom->getMinutes());
     }
 
     /** @test */
@@ -54,5 +94,19 @@ class FabricTest extends TestCase
         $this->assertTrue($loom_three->gt($loom_one));
         $this->assertTrue($loom_two->gte($loom_three));
         $this->assertTrue($loom_three->lte($loom_two));
+    }
+
+
+    /** @test */
+    public function it_can_perform_simple_arithmetic()
+    {
+        $loom = Loom::make()->fromMinutes(2);
+        $loom->add(Loom::make()->fromSeconds(10));
+
+        $this->assertEquals(130, $loom->getSeconds());
+
+        $loom->sub(Loom::make()->fromHours(1));
+        $this->assertEquals(0, $loom->getMinutes());
+
     }
 }

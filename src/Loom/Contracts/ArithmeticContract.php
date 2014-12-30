@@ -13,7 +13,9 @@ namespace Loom\Contracts;
 
 use Loom\Loom;
 
-interface LoomContract
+interface ArithmeticContract
 {
-    public static function make();
+    public function add(Loom $loom);
+
+    public function sub(Loom $loom);
 }

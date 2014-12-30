@@ -73,4 +73,14 @@ interface ComparisonsContract
      * @return bool
      */
     public function gte(Loom $fabric);
+
+
+    /**
+     * Get the difference between
+     *
+     * @param Loom $fabric
+     *
+     * @return Loom
+     */
+    public function diff(Loom $fabric);
 }

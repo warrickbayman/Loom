@@ -89,9 +89,9 @@ trait LoomTranslaters
      *
      * @return float
      */
-    public function getMonths()
+    public function getMonths($daysPerMonth = null)
     {
-        return $this->ms / 1000 / 60 / 60 / 24 / (365 / 12);
+        return $this->ms / 1000 / 60 / 60 / 24 / (is_null($daysPerMonth) ? 365 / 12 : $daysPerMonth);
     }
 
 

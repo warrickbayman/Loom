@@ -28,7 +28,7 @@ abstract class AbstractUnit implements UnitContract
     /**
      * @param int $value
      */
-    function __construct($value)
+    public function __construct($value)
     {
         $this->value = $value;
     }
