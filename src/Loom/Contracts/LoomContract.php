@@ -15,12 +15,5 @@ use Loom\Loom;
 
 interface LoomContract
 {
-    /**
-     * Get the difference between
-     *
-     * @param Loom $fabric
-     *
-     * @return Loom
-     */
-    public function diff(Loom $fabric);
+    public static function make();
 }

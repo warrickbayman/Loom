@@ -94,4 +94,22 @@ trait LoomComparisons
     {
         return ($this->ms >= $fabric->getMilliseconds());
     }
+
+
+    /**
+     * Get the difference between
+     *
+     * @param Loom $fabric
+     *
+     * @return Loom
+     */
+    public function diff(Loom $fabric)
+    {
+        $diff = $fabric->getMilliseconds() - $this->ms;
+        if ($diff < 0) {
+            $diff = -$diff;
+        }
+
+        return Loom::make()->fromMilliseconds($diff);
+    }
 }

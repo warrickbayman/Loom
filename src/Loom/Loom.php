@@ -42,19 +42,12 @@ class Loom implements LoomContract, TranslatersContract, ComparisonsContract
 
 
     /**
-     * Get the difference between
+     * Make a new LoomFactory instance
      *
-     * @param Loom $fabric
-     *
-     * @return Loom
+     * @return LoomFactory
      */
-    public function diff(Loom $fabric)
+    public static function make()
     {
-        $diff = $fabric->getMilliseconds() - $this->ms;
-        if ($diff < 0) {
-            $diff = -$diff;
-        }
-
-        return new Loom(new Milliseconds($diff));
+        return new LoomFactory();
     }
 }
