@@ -11,7 +11,7 @@ Install Loom via Composer, by adding to the `requires` section of your `composer
 ```json
 {
 	"require": {
-		"warrickbayman/loom": "dev-master"
+		"warrickbayman/loom": "~0.1"
 	}
 }
 ```
