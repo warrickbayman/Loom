@@ -11,6 +11,11 @@
 namespace Loom;
 
 
+/**
+ * Class Milliseconds
+ *
+ * @package Loom
+ */
 class Milliseconds extends AbstractUnit
 {
     /**

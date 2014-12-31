@@ -11,6 +11,11 @@
 namespace Loom\Contracts;
 
 
+/**
+ * Interface TranslatersContract
+ *
+ * @package Loom\Contracts
+ */
 interface TranslatersContract
 {
     /**

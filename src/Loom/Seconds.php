@@ -10,6 +10,11 @@
 
 namespace Loom;
 
+/**
+ * Class Seconds
+ *
+ * @package Loom
+ */
 class Seconds extends AbstractUnit
 {
     /**

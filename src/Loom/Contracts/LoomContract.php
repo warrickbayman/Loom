@@ -11,9 +11,17 @@
 namespace Loom\Contracts;
 
 
-use Loom\Loom;
-
+/**
+ * Interface LoomContract
+ *
+ * @package Loom\Contracts
+ */
 interface LoomContract
 {
+    /**
+     * Make a new LoomFactory instance
+     *
+     * @return LoomFactory
+     */
     public static function make();
 }

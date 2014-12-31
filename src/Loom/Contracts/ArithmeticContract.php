@@ -13,9 +13,29 @@ namespace Loom\Contracts;
 
 use Loom\Loom;
 
+/**
+ * Interface ArithmeticContract
+ *
+ * @package Loom\Contracts
+ */
 interface ArithmeticContract
 {
+    /**
+     * Add a Loom
+     *
+     * @param Loom $loom
+     *
+     * @return Loom
+     */
     public function add(Loom $loom);
 
+
+    /**
+     * Subtract a Loom
+     *
+     * @param Loom $loom
+     *
+     * @return Loom
+     */
     public function sub(Loom $loom);
 }

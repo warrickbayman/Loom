@@ -11,10 +11,23 @@
 namespace Loom;
 
 
+/**
+ * Class Months
+ *
+ * @package Loom
+ */
 class Months extends AbstractUnit
 {
+    /**
+     * @var null
+     */
     private $daysPerMonth = null;
 
+
+    /**
+     * @param int  $value
+     * @param null $daysPerMonth
+     */
     public function __construct($value, $daysPerMonth = null)
     {
         parent::__construct($value);

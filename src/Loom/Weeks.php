@@ -11,6 +11,11 @@
 namespace Loom;
 
 
+/**
+ * Class Weeks
+ *
+ * @package Loom
+ */
 class Weeks extends AbstractUnit
 {
     /**

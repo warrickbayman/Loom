@@ -11,6 +11,11 @@
 namespace Loom;
 
 
+/**
+ * Class Years
+ *
+ * @package Loom
+ */
 class Years extends AbstractUnit
 {
     /**

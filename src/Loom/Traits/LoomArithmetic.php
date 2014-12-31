@@ -15,12 +15,27 @@ use Loom\Loom;
 
 trait LoomArithmetic
 {
+    /**
+     * Add a Loom
+     *
+     * @param Loom $loom
+     *
+     * @return Loom
+     */
     public function add(Loom $loom)
     {
         $this->ms = $this->ms + $loom->getMilliseconds();
         return $this;
     }
 
+
+    /**
+     * Subtract a Loom
+     *
+     * @param Loom $loom
+     *
+     * @return Loom
+     */
     public function sub(Loom $loom)
     {
         $this->ms = $this->ms - $loom->getMilliseconds();

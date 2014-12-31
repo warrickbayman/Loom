@@ -10,6 +10,17 @@
 
 namespace Loom\Contracts;
 
+/**
+ * Interface UnitContract
+ *
+ * @package Loom\Contracts
+ */
 interface UnitContract
 {
+    /**
+     * Return the value in milliseconds
+     *
+     * @return int
+     */
+    public function toMilliseconds();
 }

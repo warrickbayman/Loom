@@ -11,6 +11,11 @@
 namespace Loom\Contracts;
 
 
+/**
+ * Interface LoomFactory
+ *
+ * @package Loom\Contracts
+ */
 interface LoomFactory
 {
     /**
