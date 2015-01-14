@@ -23,14 +23,12 @@ use Loom\Traits\LoomTranslaters;
  *
  * @package Loom
  */
-class Loom implements LoomContract, TranslatersContract, ComparisonsContract, ArithmeticContract
+class Loom extends AbstractLoom implements LoomContract
 {
     /**
      * @var int
      */
-    private $ms = 0;
-
-    use LoomTranslaters, LoomComparisons, LoomArithmetic;
+    protected $ms = 0;
 
     /**
      * Loom

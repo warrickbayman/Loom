@@ -98,6 +98,17 @@ class FabricTest extends TestCase
 
 
     /** @test */
+    public function it_can_check_if_it_is_between_two_units()
+    {
+        $loom = Loom::make()->fromMinutes(1);
+        $this->assertTrue($loom->isBetween(
+            Loom::make()->fromSeconds(59),
+            Loom::make()->fromMinutes(2)
+        ));
+    }
+
+
+    /** @test */
     public function it_can_perform_simple_arithmetic()
     {
         $loom = Loom::make()->fromMinutes(2);
@@ -107,6 +118,5 @@ class FabricTest extends TestCase
 
         $loom->sub(Loom::make()->fromHours(1));
         $this->assertEquals(0, $loom->getMinutes());
-
     }
 }

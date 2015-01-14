@@ -11,14 +11,14 @@
 namespace Loom;
 
 
-use Loom\Contracts\LoomFactory;
+use Loom\Contracts\LoomFactoryContract;
 
 /**
  * Class AbstractLoomFactory
  *
  * @package Loom
  */
-abstract class AbstractLoomFactory implements LoomFactory
+abstract class AbstractLoomFactoryContract implements LoomFactoryContract
 {
     /**
      * Create a new Loom instance
