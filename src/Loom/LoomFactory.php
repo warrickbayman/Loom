@@ -16,7 +16,7 @@ namespace Loom;
  *
  * @package Loom
  */
-class LoomFactory extends AbstractLoomFactoryContract
+class LoomFactory extends AbstractLoomFactory
 {
     /**
      * Create a new Loom instance

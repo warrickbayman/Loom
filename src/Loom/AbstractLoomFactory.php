@@ -18,7 +18,7 @@ use Loom\Contracts\LoomFactoryContract;
  *
  * @package Loom
  */
-abstract class AbstractLoomFactoryContract implements LoomFactoryContract
+abstract class AbstractLoomFactory implements LoomFactoryContract
 {
     /**
      * Create a new Loom instance
