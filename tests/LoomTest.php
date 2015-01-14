@@ -109,6 +109,17 @@ class FabricTest extends TestCase
 
 
     /** @test */
+    public function it_can_work_with_a_solar_year()
+    {
+        $loom = Loom::make()->fromYears(1, true);
+        $this->assertEquals(\Loom\Years::SOLAR_DAYS, $loom->getDays());
+
+        $loom = Loom::make()->fromMonths(12);
+        var_dump($loom->getYears(true));
+    }
+
+
+    /** @test */
     public function it_can_perform_simple_arithmetic()
     {
         $loom = Loom::make()->fromMinutes(2);

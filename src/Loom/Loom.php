@@ -13,7 +13,7 @@ namespace Loom;
 use Loom\Contracts\ArithmeticContract;
 use Loom\Contracts\ComparisonsContract;
 use Loom\Contracts\LoomContract;
-use Loom\Contracts\TranslatersContract;
+use Loom\Contracts\GettersContract;
 use Loom\Traits\LoomArithmetic;
 use Loom\Traits\LoomComparisons;
 use Loom\Traits\LoomTranslaters;
@@ -25,11 +25,6 @@ use Loom\Traits\LoomTranslaters;
  */
 class Loom extends AbstractLoom implements LoomContract
 {
-    /**
-     * @var int
-     */
-    protected $ms = 0;
-
     /**
      * Loom
      *

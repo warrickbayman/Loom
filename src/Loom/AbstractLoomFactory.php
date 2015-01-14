@@ -125,12 +125,13 @@ abstract class AbstractLoomFactory implements LoomFactoryContract
     /**
      * Create from years
      *
-     * @param int $years
+     * @param int  $years
+     * @param bool $solar
      *
      * @return Loom
      */
-    public function fromYears($years)
+    public function fromYears($years, $solar = false)
     {
-        return $this->createLoom(new Years($years));
+        return $this->createLoom(new Years($years, $solar));
     }
 }

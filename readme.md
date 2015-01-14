@@ -65,7 +65,7 @@ class MyLoomClass
 }
 ```
 
-Lastly, the simplest by far, is to call the static `make()` method on the `Loom` object, which returns a new instance of `LoomFactory`. Since the creation methods on `LoomFactory` return a new `Loom` object, you can chain the translator methods onto the factory creation, and use Loom in a single line:
+Lastly, the simplest by far, is to call the static `make()` method on the `Loom` object, which returns a new instance of `LoomFactory`. Since the creation methods on `LoomFactory` returns a new `Loom` object, you can chain the translator methods onto the factory creation, and use Loom in a single line:
 
 ```php
 $minutes = Loom::make()->fromHours(2)->getMinutes();    // 120
@@ -84,7 +84,7 @@ $loomFactory->fromMonths($months);
 $loomFactory->fromYears($years);
 ```
 
-### Translations
+### Getters
 
 Loom provides some simple ways to translate from one unit to another.
 
@@ -126,6 +126,19 @@ You can do the same when creating a new `Loom` object from Months:
 $loom = Loom::make()->fromMonths(12, 31);
 var_dump($loom->getDays());		// 372
 ```
+
+### Solar Year
+A year is not exactly 365 days long. Instead, it is ever so slightly longer than that. The current mean solar year is 365 days, 5 hours, 48 minutes and 45.19 seconds. Loom can use the solar year length of 365.2421897 days instead of simply 365 days by passing a boolean `true` as the second parameter when using the year methods. By default, Loom uses a flat 365 days to represent a year:
+
+```php
+$loom = Loom::make()->fromYears(1, true);
+var_dump($loom->getDays());		// 365.2421897
+
+
+$loom = Loom:make()->fromMonths(12);
+var_dump($loom->getYears(true));	// 0.99933690656
+```
+
 
 ### Difference
 
@@ -171,6 +184,19 @@ $loom1->lte($loom2);		// true
 
 It is important which object you call the comparison methods on. The object you call on is always on the left of theequasion.
 
+### Between
+Loom also provides a way to check if a unit falls between two other units. The `isBetween` method takes two Loom objects which means you can use any of the creation methods:
+
+```php
+$loom = Loom::make()->fromSeconds(120);
+if ($loom->isBetween(
+	Loom::make()->fromMinutes(1),
+	Loom::make()->fromMinutes(2)
+)) {
+	echo 'Hooray!';
+}
+```
+
 ### Simple Arithmetic
 
 You can also perform some simple arithmetic through the `add()` and `sub()` methods:
@@ -178,7 +204,7 @@ You can also perform some simple arithmetic through the `add()` and `sub()` meth
 ```php
 	$loom = Loom::make()->fromMinutes(2);
 	$loom->add(Loom::make()->fromSeconds(30));
-	var_dump($loom->getSeconds())		// 150
+	var_dump($loom->getSeconds())			// 150
 	
 	$loom->sub(Loom::make()->fromHours(1);
 	var_dump($loom->getMilliseconds);		// 0

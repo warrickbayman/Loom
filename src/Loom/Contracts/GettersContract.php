@@ -12,11 +12,11 @@ namespace Loom\Contracts;
 
 
 /**
- * Interface TranslatersContract
+ * Interface GettersContract
  *
  * @package Loom\Contracts
  */
-interface TranslatersContract
+interface GettersContract
 {
     /**
      * Get millseconds
@@ -77,7 +77,9 @@ interface TranslatersContract
     /**
      * Get years
      *
+     * @param bool $solar
+     *
      * @return float
      */
-    public function getYears();
+    public function getYears($solar = false);
 }

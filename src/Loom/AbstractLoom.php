@@ -13,10 +13,15 @@ namespace Loom;
 
 use Loom\Contracts\ArithmeticContract;
 use Loom\Contracts\ComparisonsContract;
-use Loom\Contracts\TranslatersContract;
+use Loom\Contracts\GettersContract;
 
-abstract class AbstractLoom implements TranslatersContract, ComparisonsContract, ArithmeticContract
+abstract class AbstractLoom implements GettersContract, ComparisonsContract, ArithmeticContract
 {
+    /**
+     * @var int
+     */
+    protected $ms = 0;
+
 
     /* -----------------------------------------------------------------------------------------------------------------
      * Getters
@@ -26,7 +31,7 @@ abstract class AbstractLoom implements TranslatersContract, ComparisonsContract,
 
 
     /**
-     * Get millseconds
+     * Get milliseconds
      *
      * @return int
      */
@@ -94,6 +99,8 @@ abstract class AbstractLoom implements TranslatersContract, ComparisonsContract,
     /**
      * Get months
      *
+     * @param null|int $daysPerMonth
+     *
      * @return float
      */
     public function getMonths($daysPerMonth = null)
@@ -105,11 +112,14 @@ abstract class AbstractLoom implements TranslatersContract, ComparisonsContract,
     /**
      * Get years
      *
+     * @param bool $solar
+     *
      * @return float
      */
-    public function getYears()
+    public function getYears($solar = false)
     {
-        return $this->ms / 1000 / 60 / 60 / 24 / 365;
+        $solarDays = 365.2421897;
+        return $this->ms / 1000 / 60 / 60 / 24 / ($solar ? $solarDays : 365);
     }
 
 
