@@ -17,7 +17,11 @@ Install Loom via Composer, by adding to the `requires` section of your `composer
 }
 ```
 
-Run `composer update` in your project route to install Loom into your project.
+Run `composer update` in your project route to install Loom.
+
+Loom is tested on PHP 5.4, 5.5, 5.6 and HHVM 3.4. It has no dependencies except for PHPUnit when testing. It is framework agnostic, but I use it quite a bit on a number of projects mostly using the Laravel framework, so it's well tested there.
+
+I would love to know if and how you use it.
 
 ## Use
 
