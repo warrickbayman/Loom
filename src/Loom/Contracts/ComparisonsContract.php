@@ -83,4 +83,16 @@ interface ComparisonsContract
      * @return Loom
      */
     public function diff(Loom $fabric);
+
+
+    /**
+     * Is between two units
+     *
+     * @param Loom $start
+     * @param Loom $end
+     * @param bool $inclusive
+     *
+     * @return bool
+     */
+    public function isBetween(Loom $start, Loom $end, $inclusive = false);
 }

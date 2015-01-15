@@ -11,14 +11,14 @@
 namespace Loom;
 
 
-use Loom\Contracts\LoomFactory;
+use Loom\Contracts\LoomFactoryContract;
 
 /**
  * Class AbstractLoomFactory
  *
  * @package Loom
  */
-abstract class AbstractLoomFactory implements LoomFactory
+abstract class AbstractLoomFactory implements LoomFactoryContract
 {
     /**
      * Create a new Loom instance
@@ -125,12 +125,13 @@ abstract class AbstractLoomFactory implements LoomFactory
     /**
      * Create from years
      *
-     * @param int $years
+     * @param int  $years
+     * @param bool $solar
      *
      * @return Loom
      */
-    public function fromYears($years)
+    public function fromYears($years, $solar = false)
     {
-        return $this->createLoom(new Years($years));
+        return $this->createLoom(new Years($years, $solar));
     }
 }

@@ -21,7 +21,7 @@ interface LoomContract
     /**
      * Make a new LoomFactory instance
      *
-     * @return LoomFactory
+     * @return LoomFactoryContract
      */
     public static function make();
 }

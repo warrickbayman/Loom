@@ -18,6 +18,23 @@ namespace Loom;
  */
 class Years extends AbstractUnit
 {
+    const SOLAR_DAYS = 365.2521897;
+
+    private $solar;
+
+
+    /**
+     * @param int  $value
+     * @param bool $solar
+     */
+    public function __construct($value, $solar = false)
+    {
+        parent::__construct($value);
+
+        $this->solar = $solar;
+    }
+
+
     /**
      * Return the years in milliseconds
      *
@@ -25,6 +42,6 @@ class Years extends AbstractUnit
      */
     public function toMilliseconds()
     {
-        return $this->value * 365 * 24 * 60 * 60 * 1000;
+        return $this->value * ($this->solar ? self::SOLAR_DAYS : 365) * 24 * 60 * 60 * 1000;
     }
 }
