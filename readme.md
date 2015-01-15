@@ -28,7 +28,7 @@ There are three methods to choose from when instantiating Loom.
 You create a new instance of the `Loom` object:
 
 ```php
-$fabric = new Loom\Loom(new Loom\Seconds(100));
+$loom = new Loom\Loom(new Loom\Seconds(100));
 ```
 
 To avoid having to use the `Loom` namespace each time, you could add it to your `use` clause:
@@ -46,7 +46,7 @@ class MyLoomClass
 }
 ```
 
-You could inject the `LoomFactory` class into your constructor and call the available creation methods from there:
+A recommended method is to inject the `LoomFactory` class into your constructor and call the available creation methods from there:
 
 ```php
 class MyLoomClass
@@ -84,7 +84,7 @@ $loomFactory->fromMonths($months);
 $loomFactory->fromYears($years);
 ```
 
-### Translations
+### Getters
 
 Loom provides some simple ways to translate from one unit to another.
 
@@ -99,9 +99,9 @@ $months = $loom->getMonths();
 $years = $loom->getYears();
 ```
 
-Each of the translaters return a float.
+Each of the getters return a float.
 
-### Days per month gets averaged!
+### Days per month get averaged!
 By default, Loom will average the number of days per month. This means results can be unexpected when working with months:
 
 ```php
