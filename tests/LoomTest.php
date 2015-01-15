@@ -115,7 +115,6 @@ class FabricTest extends TestCase
         $this->assertEquals(\Loom\Years::SOLAR_DAYS, $loom->getDays());
 
         $loom = Loom::make()->fromMonths(12);
-        var_dump($loom->getYears(true));
     }
 
 
