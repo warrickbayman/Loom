@@ -88,6 +88,37 @@ $loomFactory->fromMonths($months);
 $loomFactory->fromYears($years);
 ```
 
+### Using DateTime
+The `LoomFactory` object also provides a `fromTime` method which allows you to create a Loom object from a `DateTime` object.
+
+```php
+$loom = $loomFactory->fromTime(new \DateTime('2015-01-21');
+```
+
+The new loom object will represent the amount of time that has passed since the Epoc (1970-01-01 00:00:00). So, in other words, doing this...
+
+```php
+var_dump($loom->getHours());
+```
+
+... will get you the number of hours since the 1st of January 1970. However, this becomes a little more useful when you you need to get the difference between two specific dates:
+
+```php
+$loom = Loom::make()->fromTime(new \DateTime('2015-01-21'));
+$result = $loom->diff(Loom::make()->fromTime(new \DateTime('2015-01-27'));
+
+var_dump($result->getDays());     // 6
+var_dump($result->getHours());    // 144
+var_dump($result->getMinutes());  // 8640
+```
+
+And since libraries like `nesbot\carbon` simply extend the `DateTime` object, you can do things like this as well...
+
+```php
+$loom = Loom::make()->fromTime(\Carbon\Carbon::now());
+```
+
+
 ### Getters
 
 Loom provides some simple ways to translate from one unit to another.

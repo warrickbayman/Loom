@@ -129,4 +129,19 @@ class FabricTest extends TestCase
         $loom->sub(Loom::make()->fromHours(1));
         $this->assertEquals(0, $loom->getMinutes());
     }
+
+
+    /** @test */
+    public function it_can_be_created_from_a_datetime()
+    {
+        $loom = Loom::make()->fromTime(new DateTime('2015-01-21'));
+        $result = $loom->diff(Loom::make()->fromTime(new DateTime('2015-01-27')));
+
+        $this->assertEquals(6, $result->getDays());
+
+        $loom = Loom::make()->fromTime(\Carbon\Carbon::now());
+        $result = $loom->diff(Loom::make()->fromTime(\Carbon\Carbon::now()->addHours(22)));
+
+        $this->assertEquals(22, $result->getHours());
+    }
 }
