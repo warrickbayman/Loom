@@ -134,4 +134,10 @@ abstract class AbstractLoomFactory implements LoomFactoryContract
     {
         return $this->createLoom(new Years($years, $solar));
     }
+
+
+    public function fromTime(\DateTime $dateTime)
+    {
+        return $this->createLoom(new seconds($dateTime->getTimestamp()));
+    }
 }
