@@ -105,6 +105,11 @@ class FabricTest extends TestCase
             Loom::make()->fromSeconds(59),
             Loom::make()->fromMinutes(2)
         ));
+
+        $this->assertTrue($loom->isBetween(
+            Loom::make()->fromSeconds(60),
+            Loom::make()->fromSeconds(61), true)
+        );
     }
 
 
@@ -134,6 +139,7 @@ class FabricTest extends TestCase
     /** @test */
     public function it_can_be_created_from_a_datetime()
     {
+        date_default_timezone_set('UTC');
         $loom = Loom::make()->fromTime(new DateTime('2015-01-21'));
         $result = $loom->diff(Loom::make()->fromTime(new DateTime('2015-01-27')));
 
