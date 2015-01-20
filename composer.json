@@ -17,6 +17,9 @@
         "phpunit/phpunit": "~4.2",
         "nesbot/carbon": "~1.13"
     },
+    "suggest": {
+        "nesbot/carbon": "A simple API extension for DateTime"
+    },
     "autoload": {
         "psr-0": {
             "Loom": "src"
