@@ -6,6 +6,26 @@
 
 Loom is a super simple way to work with units of time (hours, minutes, seconds, etc).
 
+## Why?
+Because who know what this means?
+
+```php
+$something = someFunctionWithTime(7200);
+```
+
+The `5400` here is meaningless. So I started Loom to wrap numbers when working with time constants in a way that was readable:
+
+```php
+$loom = Loom::make()->fromHours(2);
+$something = someFunctionWithTime($loom-getSeconds());
+```
+
+Sure, it's longer, but it's so much easier to read. Plus, you get a bit of functionality to convert from one unit of time to another.
+
+Loom is tested on PHP 5.4, 5.5, 5.6 and HHVM 3.4. It has no dependencies except for PHPUnit when testing. It is framework agnostic, but I use it quite a bit on a number of projects mostly using the Laravel framework, so it's well tested there.
+
+Let me know if and how you use it.
+
 ## Installation
 Install Loom via Composer, by adding to the `requires` section of your `composer.json` file.
 
@@ -18,10 +38,6 @@ Install Loom via Composer, by adding to the `requires` section of your `composer
 ```
 
 Run `composer update` in your project route to install Loom.
-
-Loom is tested on PHP 5.4, 5.5, 5.6 and HHVM 3.4. It has no dependencies except for PHPUnit when testing. It is framework agnostic, but I use it quite a bit on a number of projects mostly using the Laravel framework, so it's well tested there.
-
-I would love to know if and how you use it.
 
 ## Use
 
