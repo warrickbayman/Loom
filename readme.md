@@ -13,7 +13,7 @@ Because who know what this means?
 $something = someFunctionWithTime(7200);
 ```
 
-The `5400` here is meaningless. So I started Loom to wrap numbers when working with time constants in a way that was readable:
+The `7200` is meaningless. Seconds? Hours? Years? So I started Loom to wrap numbers when working with time constants in a way that was readable:
 
 ```php
 $loom = Loom::make()->fromHours(2);
