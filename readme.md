@@ -17,7 +17,7 @@ The `7200` is meaningless. Seconds? Hours? Years? So I started Loom to wrap numb
 
 ```php
 $loom = Loom::make()->fromHours(2);
-$something = someFunctionWithTime($loom-getSeconds());
+$something = someFunctionWithTime($loom->getSeconds());
 ```
 
 Sure, it's longer, but it's so much easier to read. Plus, you get a bit of functionality to convert from one unit of time to another.
