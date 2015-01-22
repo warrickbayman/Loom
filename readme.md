@@ -7,7 +7,7 @@
 Loom is a super simple way to work with units of time (hours, minutes, seconds, etc).
 
 ## Why?
-Because who know what this means?
+Because who knows what this means?
 
 ```php
 $something = someFunctionWithTime(7200);
@@ -37,7 +37,7 @@ Install Loom via Composer, by adding to the `requires` section of your `composer
 }
 ```
 
-Run `composer update` in your project route to install Loom.
+Run `composer update` in your project root to install Loom.
 
 ## Use
 
@@ -193,7 +193,7 @@ var_dump($loom->getYears(true));	// 0.99933690656
 
 ### Difference
 
-You can use the `diff()` method to get the difference between to Loom objects. The `diff()` method returns a third Loom object.
+You can use the `diff()` method to get the difference between two Loom objects. The `diff()` method returns a new Loom object.
 
 ```php
 $loom1 = Loom::make()->fromDays(1);
@@ -204,7 +204,7 @@ $diff = $loom1->diff($loom2);
 var_dump($diff->getHours());		// Returns 24.
 ```
 
-It doesn't matter which object use call the `diff()` method on. The result will be the same either way.
+It doesn't matter which object you call the `diff()` method on. The result will be the same either way.
 
 ### Comparisons
 
@@ -233,7 +233,7 @@ $loom1->lt($loom2);			// true
 $loom1->lte($loom2);		// true
 ```
 
-It is important which object you call the comparison methods on. The object you call on is always on the left of theequasion.
+Here it _is_ important which object you call the comparison methods on. The object you call on is always on the left of the equasion.
 
 ### Between
 Loom also provides a way to check if a unit falls between two other units. The `isBetween` method takes two Loom objects which means you can use any of the creation methods:
@@ -262,10 +262,3 @@ You can also perform some simple arithmetic through the `add()` and `sub()` meth
 ```
 
 A `Loom` object can never have a negative value. Subtracting a larger Loom from a smaller one will always result in 0.
-
-
-## Tests
-
-Oh yes. Loom is 100% covered! You can run the tests from the `warrickbayman/loom` directory once installed:
-
-`vendor/phpunit/phpunit/phpunit -c phpunit.xml`
