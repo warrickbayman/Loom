@@ -145,8 +145,8 @@ class FabricTest extends TestCase
 
         $this->assertEquals(6, $result->getDays());
 
-        $loom = Loom::make()->fromTime(\Carbon\Carbon::now());
-        $result = $loom->diff(Loom::make()->fromTime(\Carbon\Carbon::now()->addHours(22)));
+        $loom = Loom::make()->fromTime(new DateTime('now'));
+        $result = $loom->diff(Loom::make()->fromTime(new DateTime('now + 22 hours')));
 
         $this->assertEquals(22, $result->getHours());
     }
