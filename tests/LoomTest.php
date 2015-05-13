@@ -160,4 +160,14 @@ class FabricTest extends TestCase
 
         $this->assertEquals(120, $result->getHours());
     }
+
+
+    /** @test */
+    public function it_can_get_time_until()
+    {
+        $loom = Loom::make()->fromTime(new DateTime('now + 5 days'));
+        $result = $loom->until();
+
+        $this->assertEquals(120, $result->getHours());
+    }
 }
