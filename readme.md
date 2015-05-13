@@ -32,7 +32,7 @@ Install Loom via Composer, by adding to the `requires` section of your `composer
 ```json
 {
 	"require": {
-		"warrickbayman/loom": "~0.1"
+		"warrickbayman/loom": "~0.2"
 	}
 }
 ```
