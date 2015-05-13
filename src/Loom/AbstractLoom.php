@@ -309,9 +309,6 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
      */
     public function until()
     {
-        $now = (new \DateTime('now'))->getTimestamp();
-        $until = $this->diff(Loom::make()->fromSeconds($now));
-
-        return $until;
+        return $this->since();
     }
 }

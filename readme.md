@@ -206,6 +206,22 @@ var_dump($diff->getHours());		// Returns 24.
 
 It doesn't matter which object you call the `diff()` method on. The result will be the same either way.
 
+There are also two time saving methods available which returns the difference until a specific time, or since a specific
+time. The aptly name `until()` and `since()` methods are only really useful if you first create a Loom object from a 
+PHP `DateTime` object. Both methods return a new Loom object.
+
+```php
+$loomPast = Loom::make()->fromTime(new \DateTime('now - 5 days'));
+$loomFuture = Loom::make()->fromTime(new \DateTime('now + 10 days'));
+
+var_dump($loomPast->since()->getHours());       // Returns 120.
+var_dump($loomFuture->until()->getHours());     // Returns 240.
+```
+
+The `since()` and `until()` methods simply do a `diff()` on the two Loom objects, and since the `diff()` method will
+always return a positive number, the `since()` and `until()` methods are actually identical. They exist simply to help
+make your code a little more readable.
+
 ### Comparisons
 
 A number of comparison methods also exist:
