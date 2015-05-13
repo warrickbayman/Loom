@@ -18,71 +18,71 @@ interface ComparisonsContract
     /**
      * Test equality
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function eq(Loom $fabric);
+    public function eq(Loom $loom);
 
 
     /**
      * Test not equal to
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function ne(Loom $fabric);
+    public function ne(Loom $loom);
 
 
     /**
      * Test less than
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function lt(Loom $fabric);
+    public function lt(Loom $loom);
 
 
     /**
      * Test less than or equal to
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function lte(Loom $fabric);
+    public function lte(Loom $loom);
 
 
     /**
      * Test greater than
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function gt(Loom $fabric);
+    public function gt(Loom $loom);
 
 
     /**
      * Test greater than or equal to
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function gte(Loom $fabric);
+    public function gte(Loom $loom);
 
 
     /**
      * Get the difference between
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return Loom
      */
-    public function diff(Loom $fabric);
+    public function diff(Loom $loom);
 
 
     /**

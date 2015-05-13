@@ -133,13 +133,13 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
     /**
      * Test equality
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function eq(Loom $fabric)
+    public function eq(Loom $loom)
     {
-        if ($fabric->getMilliseconds() == $this->ms) {
+        if ($loom->getMilliseconds() == $this->ms) {
             return true;
         }
         return false;
@@ -149,78 +149,78 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
     /**
      * Test not equal to
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function ne(Loom $fabric)
+    public function ne(Loom $loom)
     {
-        return ($this->ms != $fabric->getMilliseconds());
+        return ($this->ms != $loom->getMilliseconds());
     }
 
 
     /**
      * Test less than
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function lt(Loom $fabric)
+    public function lt(Loom $loom)
     {
-        return ($this->ms < $fabric->getMilliseconds());
+        return ($this->ms < $loom->getMilliseconds());
     }
 
 
     /**
      * Test less than or equal to
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function lte(Loom $fabric)
+    public function lte(Loom $loom)
     {
-        return ($this->ms <= $fabric->getMilliseconds());
+        return ($this->ms <= $loom->getMilliseconds());
     }
 
 
     /**
      * Test greater than
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function gt(Loom $fabric)
+    public function gt(Loom $loom)
     {
-        return ($this->ms > $fabric->getMilliseconds());
+        return ($this->ms > $loom->getMilliseconds());
     }
 
 
     /**
      * Test greater than or equal to
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return bool
      */
-    public function gte(Loom $fabric)
+    public function gte(Loom $loom)
     {
-        return ($this->ms >= $fabric->getMilliseconds());
+        return ($this->ms >= $loom->getMilliseconds());
     }
 
 
     /**
      * Get the difference between
      *
-     * @param Loom $fabric
+     * @param Loom $loom
      *
      * @return Loom
      */
-    public function diff(Loom $fabric)
+    public function diff(Loom $loom)
     {
-        $diff = $fabric->getMilliseconds() - $this->ms;
+        $diff = $loom->getMilliseconds() - $this->ms;
         if ($diff < 0) {
             $diff = -$diff;
         }
@@ -285,5 +285,14 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
             $this->ms = 0;
         }
         return $this;
+    }
+
+
+    public function since()
+    {
+        $now = (new \DateTime('now'))->getTimestamp();
+        $since = $this->diff(Loom::make()->fromSeconds($now));
+
+        return $since;
     }
 }

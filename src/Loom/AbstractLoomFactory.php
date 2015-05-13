@@ -136,6 +136,13 @@ abstract class AbstractLoomFactory implements LoomFactoryContract
     }
 
 
+    /**
+     * Create from a new DateTime object
+     *
+     * @param \DateTime $dateTime
+     *
+     * @return Loom
+     */
     public function fromTime(\DateTime $dateTime)
     {
         return $this->createLoom(new seconds($dateTime->getTimestamp()));
