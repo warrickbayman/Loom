@@ -23,19 +23,19 @@ interface ArithmeticContract
     /**
      * Add a Loom
      *
-     * @param Loom $loom
+     * @param Loom|AbstractUnit $loom
      *
      * @return Loom
      */
-    public function add(Loom $loom);
+    public function add($loom);
 
 
     /**
      * Subtract a Loom
      *
-     * @param Loom $loom
+     * @param Loom|AbstractUnit $loom
      *
      * @return Loom
      */
-    public function sub(Loom $loom);
+    public function sub($loom);
 }

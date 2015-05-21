@@ -14,6 +14,7 @@ namespace Loom;
 use Loom\Contracts\ArithmeticContract;
 use Loom\Contracts\ComparisonsContract;
 use Loom\Contracts\GettersContract;
+use Loom\Contracts\UnitContract;
 
 abstract class AbstractLoom implements GettersContract, ComparisonsContract, ArithmeticContract
 {
@@ -260,13 +261,21 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
     /**
      * Add a Loom
      *
-     * @param Loom $loom
+     * @param Loom|AbstractUnit $loom
      *
      * @return Loom
      */
-    public function add(Loom $loom)
+    public function add($loom)
     {
-        $this->ms = $this->ms + $loom->getMilliseconds();
+        switch (get_parent_class($loom)) {
+            case 'Loom\Loom':
+            case 'Loom\AbstractLoom':
+                $this->ms = $this->ms + $loom->getMilliseconds();
+                break;
+            case 'Loom\AbstractUnit':
+                $this->ms = $this->ms + $loom->toMilliseconds();
+        }
+
         return $this;
     }
 
@@ -274,13 +283,22 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
     /**
      * Subtract a Loom
      *
-     * @param Loom $loom
+     * @param Loom|AbstractUnit $loom
      *
      * @return Loom
      */
-    public function sub(Loom $loom)
+    public function sub($loom)
     {
-        $this->ms = $this->ms - $loom->getMilliseconds();
+        switch(get_parent_class($loom)) {
+            case 'Loom\Loom':
+            case 'Loom\AbstractLoom':
+                $this->ms = $this->ms - $loom->getMilliseconds();
+                break;
+            case 'Loom\AbstractUnit':
+                $this->ms = $this->ms - $loom->toMilliseconds();
+                break;
+        }
+
         if ($this->ms < 0) {
             $this->ms = 0;
         }
@@ -310,5 +328,11 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
     public function until()
     {
         return $this->since();
+    }
+
+
+    public function getRemainingDays(Loom $sub)
+    {
+
     }
 }

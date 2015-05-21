@@ -140,6 +140,20 @@ class LoomTest extends TestCase
 
 
     /** @test */
+    public function it_can_do_arithmetic_with_units()
+    {
+        $loom = new \Loom\Loom(new \Loom\Days(1000));
+        $result = $loom->add(new \Loom\Hours(24));
+
+        $this->assertEquals(1001, $result->getDays());
+
+        $result = $loom->sub(new \Loom\Hours(48));
+
+        $this->assertEquals(999, $result->getDays());
+    }
+
+
+    /** @test */
     public function it_can_be_created_from_a_datetime()
     {
         date_default_timezone_set('UTC');
