@@ -25,8 +25,8 @@ class Months extends AbstractUnit
 
 
     /**
-     * @param int  $value
-     * @param null $daysPerMonth
+     * @param int      $value
+     * @param int|null $daysPerMonth
      */
     public function __construct($value, $daysPerMonth = null)
     {

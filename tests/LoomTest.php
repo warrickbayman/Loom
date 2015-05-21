@@ -11,7 +11,7 @@
 
 use Loom\Loom;
 
-class FabricTest extends TestCase
+class LoomTest extends TestCase
 {
     /** @test */
     public function it_can_translate_values()
@@ -40,8 +40,11 @@ class FabricTest extends TestCase
         return [[new \Loom\LoomFactory()]];
     }
 
+
     /** @test
      * @dataProvider getFactory
+     *
+     * @param \Loom\LoomFactory $loomFactory
      */
     public function it_can_be_instantiated_using_the_factory(\Loom\LoomFactory $loomFactory)
     {
