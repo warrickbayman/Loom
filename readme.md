@@ -73,9 +73,9 @@ class MyLoomClass
 {
 	private $loom;
 	
-	public function __construct(Loom\LoomFactory $factory)
+	public function __construct(Loom\LoomFactory $loom)
 	{
-		$this->loom = $factory->fromSeconds(240);
+		$this->loom = $loom->fromSeconds(240);
 	}
 	
 	public function translate()
@@ -105,10 +105,13 @@ $loomFactory->fromYears($years);
 ```
 
 ### Using DateTime
-The `LoomFactory` object also provides a `fromTime` method which allows you to create a Loom object from a `DateTime` object.
+**Note: the `fromTime()` method has been deprecated and will be removed in 0.3. Please use `fromDateTime()` instead.**
+
+
+The `LoomFactory` object also provides a `fromDateTime` method which allows you to create a Loom object from a `DateTime` object.
 
 ```php
-$loom = $loomFactory->fromTime(new \DateTime('2015-01-21');
+$loom = $loomFactory->fromDateTime(new \DateTime('2015-01-21');
 ```
 
 The new loom object will represent the amount of time that has passed since the Epoc (1970-01-01 00:00:00). So, in other words, doing this...
@@ -120,8 +123,8 @@ var_dump($loom->getHours());
 ... will get you the number of hours since the 1st of January 1970. However, this becomes a little more useful when you you need to get the difference between two specific dates:
 
 ```php
-$loom = Loom::make()->fromTime(new \DateTime('2015-01-21'));
-$result = $loom->diff(Loom::make()->fromTime(new \DateTime('2015-01-27'));
+$loom = Loom::make()->fromDateTime(new \DateTime('2015-01-21'));
+$result = $loom->diff(Loom::make()->fromDateTime(new \DateTime('2015-01-27'));
 
 var_dump($result->getDays());     // 6
 var_dump($result->getHours());    // 144
@@ -273,8 +276,19 @@ You can also perform some simple arithmetic through the `add()` and `sub()` meth
 	$loom->add(Loom::make()->fromSeconds(30));
 	var_dump($loom->getSeconds())			// 150
 	
-	$loom->sub(Loom::make()->fromHours(1);
+	$loom->sub(Loom::make()->fromHours(1));
 	var_dump($loom->getMilliseconds);		// 0
 ```
 
 A `Loom` object can never have a negative value. Subtracting a larger Loom from a smaller one will always result in 0.
+
+The arithmetic methods also accept an instance of `AbstractUnit`, so you don't need to create another `Loom` object. You can just pass the unit into the methods:
+
+```php
+	$loom = Loom::make()->fromMinutes(2);
+	$loom->add(new Loom\Seconds(60));
+	var_dump($loom->getMinutes());		// 180
+	
+	$loom->sub(new Loom\Minutes(2));
+	var_dump($loom->getSeconds());		// 60
+```

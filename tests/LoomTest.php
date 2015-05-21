@@ -157,13 +157,13 @@ class LoomTest extends TestCase
     public function it_can_be_created_from_a_datetime()
     {
         date_default_timezone_set('UTC');
-        $loom = Loom::make()->fromTime(new DateTime('2015-01-21'));
-        $result = $loom->diff(Loom::make()->fromTime(new DateTime('2015-01-27')));
+        $loom = Loom::make()->fromDateTime(new DateTime('2015-01-21'));
+        $result = $loom->diff(Loom::make()->fromDateTime(new DateTime('2015-01-27')));
 
         $this->assertEquals(6, $result->getDays());
 
-        $loom = Loom::make()->fromTime(new DateTime('now'));
-        $result = $loom->diff(Loom::make()->fromTime(new DateTime('now + 22 hours')));
+        $loom = Loom::make()->fromDateTime(new DateTime('now'));
+        $result = $loom->diff(Loom::make()->fromDateTime(new DateTime('now + 22 hours')));
 
         $this->assertEquals(22, $result->getHours());
     }
