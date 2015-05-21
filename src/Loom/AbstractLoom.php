@@ -329,10 +329,4 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
     {
         return $this->since();
     }
-
-
-    public function getRemainingDays(Loom $sub)
-    {
-
-    }
 }

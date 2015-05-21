@@ -156,7 +156,7 @@ abstract class AbstractLoomFactory implements LoomFactoryContract
      *
      * @param  \DateTime $dateTime
      * @see    AbstractLoomFactory::fromTime()
-     * 
+     *
      * @return Loom
      */
     public function fromDateTime(\DateTime $dateTime)
