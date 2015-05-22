@@ -172,7 +172,7 @@ class LoomTest extends TestCase
     /** @test */
     public function it_can_get_time_since()
     {
-        $loom = Loom::make()->fromTime(new DateTime('now - 5 days'));
+        $loom = Loom::make()->fromDateTime(new DateTime('now - 5 days'));
         $result = $loom->since();
 
         $this->assertEquals(120, $result->getHours());
