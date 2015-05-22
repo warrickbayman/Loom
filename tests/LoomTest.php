@@ -187,4 +187,15 @@ class LoomTest extends TestCase
 
         $this->assertEquals(120, $result->getHours());
     }
+
+
+    /** @test */
+    public function it_can_work_with_microseconds()
+    {
+        $loom = Loom::make()->fromMicroseconds(1000000);
+        $this->assertEquals(1, $loom->getSeconds());
+
+        $loom->add(Loom::make()->fromSeconds(1));
+        $this->assertEquals(2000000, $loom->getMicroseconds());
+    }
 }

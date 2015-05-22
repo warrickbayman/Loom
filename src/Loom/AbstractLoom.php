@@ -32,6 +32,17 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
 
 
     /**
+     * Get microseconds
+     *
+     * @return int
+     */
+    public function getMicroseconds()
+    {
+        return $this->ms * 1000;
+    }
+
+
+    /**
      * Get milliseconds
      *
      * @return int

@@ -31,6 +31,18 @@ abstract class AbstractLoomFactory implements LoomFactoryContract
 
 
     /**
+     * Create from microseconds
+     * @param float $microseconds
+     *
+     * @return Loom
+     */
+    public function fromMicroseconds($microseconds)
+    {
+        return $this->createLoom(new Microseconds($microseconds));
+    }
+
+
+    /**
      * Create from milliseconds
      *
      * @param int $milliseconds
