@@ -19,6 +19,15 @@ namespace Loom\Contracts;
 interface LoomFactoryContract
 {
     /**
+     * Create from microseconds
+     * @param float $microseconds
+     *
+     * @return Loom
+     */
+    public function fromMicroseconds($microseconds);
+
+
+    /**
      * Create from milliseconds
      *
      * @param int $milliseconds
