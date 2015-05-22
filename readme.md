@@ -94,6 +94,7 @@ $minutes = Loom::make()->fromHours(2)->getMinutes();    // 120
 The creation methods on `LoomFactory`:
 
 ```php
+$loomFactory->fromMicroseconds($microseconds);
 $loomFactory->fromMilliseconds($milliseconds);
 $loomFactory->fromSeconds($seconds);
 $loomFactory->fromMinutes($minutes);
@@ -143,6 +144,7 @@ $loom = Loom::make()->fromTime(\Carbon\Carbon::now());
 Loom provides some simple ways to translate from one unit to another.
 
 ```php
+$microseconds = $loom->getMicroseconds();
 $milliseconds = $loom->getMilliseconds();
 $seconds = $loom->getSeconds();
 $minutes = $loom->getMinutes();
