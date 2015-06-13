@@ -10,17 +10,18 @@
 
 namespace Loom\Contracts;
 
+
 /**
- * Interface UnitContract
+ * Interface LoomContract
  *
  * @package Loom\Contracts
  */
-interface UnitContract
+interface LoomInterface
 {
     /**
-     * Return the value in milliseconds
+     * Make a new LoomFactory instance
      *
-     * @return int
+     * @return LoomFactoryInterface
      */
-    public function toMilliseconds();
+    public static function make();
 }

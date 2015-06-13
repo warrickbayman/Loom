@@ -10,20 +10,14 @@
 
 namespace Loom;
 
-use Loom\Contracts\ArithmeticContract;
-use Loom\Contracts\ComparisonsContract;
-use Loom\Contracts\LoomContract;
-use Loom\Contracts\GettersContract;
-use Loom\Traits\LoomArithmetic;
-use Loom\Traits\LoomComparisons;
-use Loom\Traits\LoomTranslaters;
+use Loom\Contracts\LoomInterface;
 
 /**
  * Class Loom
  *
  * @package Loom
  */
-class Loom extends AbstractLoom implements LoomContract
+class Loom extends AbstractLoom implements LoomInterface
 {
     /**
      * Loom

@@ -13,7 +13,7 @@ namespace Loom\Contracts;
 
 use Loom\Loom;
 
-interface ComparisonsContract
+interface ComparisonsInterface
 {
     /**
      * Test equality

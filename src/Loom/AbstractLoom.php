@@ -10,13 +10,11 @@
 
 namespace Loom;
 
+use Loom\Contracts\ArithmeticInterface;
+use Loom\Contracts\ComparisonsInterface;
+use Loom\Contracts\GettersInterface;
 
-use Loom\Contracts\ArithmeticContract;
-use Loom\Contracts\ComparisonsContract;
-use Loom\Contracts\GettersContract;
-use Loom\Contracts\UnitContract;
-
-abstract class AbstractLoom implements GettersContract, ComparisonsContract, ArithmeticContract
+abstract class AbstractLoom implements GettersInterface, ComparisonsInterface, ArithmeticInterface
 {
     /**
      * @var int
@@ -256,9 +254,9 @@ abstract class AbstractLoom implements GettersContract, ComparisonsContract, Ari
         $endMs = $end->getMilliseconds();
 
         if ($inclusive) {
-            return $this->getMilliseconds() >= $startMs and $this->getMilliseconds() <= $endMs;
+            return $this->getMilliseconds() >= $startMs && $this->getMilliseconds() <= $endMs;
         }
-        return $this->getMilliseconds() > $startMs and $this->getMilliseconds() < $endMs;
+        return $this->getMilliseconds() > $startMs && $this->getMilliseconds() < $endMs;
     }
 
 

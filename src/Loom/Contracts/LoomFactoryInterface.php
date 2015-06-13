@@ -16,7 +16,7 @@ namespace Loom\Contracts;
  *
  * @package Loom\Contracts
  */
-interface LoomFactoryContract
+interface LoomFactoryInterface
 {
     /**
      * Create from microseconds

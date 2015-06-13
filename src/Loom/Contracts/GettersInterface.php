@@ -16,7 +16,7 @@ namespace Loom\Contracts;
  *
  * @package Loom\Contracts
  */
-interface GettersContract
+interface GettersInterface
 {
     /**
      * Get millseconds

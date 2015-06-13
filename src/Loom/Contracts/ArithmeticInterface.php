@@ -18,7 +18,7 @@ use Loom\Loom;
  *
  * @package Loom\Contracts
  */
-interface ArithmeticContract
+interface ArithmeticInterface
 {
     /**
      * Add a Loom

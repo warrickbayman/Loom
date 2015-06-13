@@ -10,14 +10,14 @@
 
 namespace Loom;
 
-use Loom\Contracts\UnitContract;
+use Loom\Contracts\UnitInterface;
 
 /**
  * Class AbstractUnit
  *
  * @package Loom
  */
-abstract class AbstractUnit implements UnitContract
+abstract class AbstractUnit implements UnitInterface
 {
     /**
      * @var int
