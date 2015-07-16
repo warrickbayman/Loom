@@ -262,7 +262,7 @@ Here it _is_ important which object you call the comparison methods on. The obje
 Loom also provides a way to check if a unit falls between two other units. The `isBetween` method takes two Loom objects which means you can use any of the creation methods:
 
 ```php
-$loom = Loom::make()->fromSeconds(120);
+$loom = Loom::make()->fromSeconds(100);
 if ($loom->isBetween(
 	Loom::make()->fromMinutes(1),
 	Loom::make()->fromMinutes(2)
@@ -270,6 +270,26 @@ if ($loom->isBetween(
 	echo 'Hooray!';
 }
 ```
+
+The `isBetween` method is also accepts a second boolean parameter to specify if the the limits should be inclusive or exclusive. By default, `isBetween` is exclusive of the limits. In otherwords, if the value you are checking is equal to the upper limit, the result will be `false`.
+
+```php
+$loom = Loom::make()->fromSeconds(120);
+
+// Default is exclusive. Returns false.
+var_dump($loom->isBetween(
+	Loom::make()->fromMinutes(1),
+	Loom::make()->fromMinutes(2)
+));	
+
+// Inclusive. Returns true.
+var_dump($loom->isBetween(
+	Loom::make()->fromMinutes(1),
+	Loom::make()->fromMinutes(2)
+), true);
+
+```
+
 
 ### Simple Arithmetic
 
@@ -291,7 +311,7 @@ The arithmetic methods also accept an instance of `AbstractUnit`, so you don't n
 ```php
 	$loom = Loom::make()->fromMinutes(2);
 	$loom->add(new Loom\Seconds(60));
-	var_dump($loom->getMinutes());		// 180
+	var_dump($loom->getSeconds());		// 180
 	
 	$loom->sub(new Loom\Minutes(2));
 	var_dump($loom->getSeconds());		// 60
