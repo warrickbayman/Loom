@@ -110,6 +110,19 @@ interface LoomFactoryInterface
 
 
     /**
+     * Create from a DateTime object
+     *
+     * @param  \DateTime    $dateTime
+     * @param \DateTimeZone $timeZone
+     *
+     * @return Loom
+     * @see    AbstractLoomFactory::fromTime()
+     *
+     */
+    public function fromDateTime(\DateTime $dateTime, \DateTimeZone $timeZone = null);
+
+
+    /**
      * Make a copy of a Loom object
      *
      * @param Loom $loom

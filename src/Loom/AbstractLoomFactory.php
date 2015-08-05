@@ -166,13 +166,18 @@ abstract class AbstractLoomFactory implements LoomFactoryInterface
     /**
      * Create from a DateTime object
      *
-     * @param  \DateTime $dateTime
-     * @see    AbstractLoomFactory::fromTime()
+     * @param  \DateTime    $dateTime
+     * @param \DateTimeZone $timeZone
      *
      * @return Loom
+     * @see    AbstractLoomFactory::fromTime()
+     *
      */
-    public function fromDateTime(\DateTime $dateTime)
+    public function fromDateTime(\DateTime $dateTime, \DateTimeZone $timeZone = null)
     {
+        if ($timeZone) {
+            $dateTime->setTimezone($timeZone);
+        }
         return $this->createLoom(new Seconds($dateTime->getTimestamp()));
     }
 
