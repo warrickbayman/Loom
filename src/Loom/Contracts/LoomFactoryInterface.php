@@ -9,6 +9,7 @@
  */
 
 namespace Loom\Contracts;
+use Loom\Loom;
 
 
 /**
@@ -106,4 +107,14 @@ interface LoomFactoryInterface
      * @return Loom
      */
     public function fromYears($years);
+
+
+    /**
+     * Make a copy of a Loom object
+     *
+     * @param Loom $loom
+     *
+     * @return Loom
+     */
+    public function copy(Loom $loom);
 }
