@@ -24,7 +24,7 @@ $something = someFunctionWithTime($loom->getSeconds());
 
 Sure, it's longer, but it's so much easier to read. Plus, you get a bit of functionality to convert from one unit of time to another.
 
-Loom is tested on PHP 5.4, 5.5, 5.6 and HHVM 3.4. It has no dependencies except for PHPUnit when testing. It is framework agnostic, but I use it quite a bit on a number of projects mostly using the Laravel framework, so it's well tested there.
+Loom is tested on PHP 5.4, 5.5, 5.6, 7.0 and HHVM. It has no dependencies except for PHPUnit when testing. It is framework agnostic, but I use it quite a bit on a number of projects mostly using the Laravel framework, so it's well tested there.
 
 Let me know if and how you use it.
 
