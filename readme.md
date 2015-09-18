@@ -4,7 +4,7 @@
 [![Unstable](https://img.shields.io/badge/unstable-dev--develop-red.svg?style=flat-square)](https://github.com/warrickbayman/Loom/tree/develop)
 [![License](http://img.shields.io/packagist/l/warrickbayman/loom.svg?style=flat-square)](http://opensource.org/licenses/mit)
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/bbae2001-fca2-4a8b-ae07-de203b3839f6/small.png)](https://insight.sensiolabs.com/projects/bbae2001-fca2-4a8b-ae07-de203b3839f6)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/02b6ee54-c786-4de4-b387-38defe63f142/small.png)](https://insight.sensiolabs.com/projects/02b6ee54-c786-4de4-b387-38defe63f142)
 
 Loom is a super simple way to work with units of time (hours, minutes, seconds, etc).
 
