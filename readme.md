@@ -108,8 +108,6 @@ $loomFactory->fromYears($years);
 ```
 
 ### Using DateTime
-**Note: the `fromTime()` method has been deprecated and will be removed in 0.3. Please use `fromDateTime()` instead.**
-
 
 The `LoomFactory` object also provides a `fromDateTime` method which allows you to create a Loom object from a `DateTime` object.
 
@@ -123,7 +121,7 @@ The new loom object will represent the amount of time that has passed since the 
 var_dump($loom->getHours());
 ```
 
-... will get you the number of hours since the 1st of January 1970. However, this becomes a little more useful when you you need to get the difference between two specific dates:
+... will get you the number of hours since the 1st of January 1970. This becomes a little more useful when you you need to get the difference between two specific dates:
 
 ```php
 $loom = Loom::make()->fromDateTime(new \DateTime('2015-01-21'));
@@ -159,7 +157,9 @@ $years = $loom->getYears();
 
 Each of the getters return a float.
 
+
 ### Days per month get averaged!
+
 By default, Loom will average the number of days per month. This means results can be unexpected when working with months:
 
 ```php
@@ -185,7 +185,9 @@ $loom = Loom::make()->fromMonths(12, 31);
 var_dump($loom->getDays());		// 372
 ```
 
+
 ### Solar Year
+
 A year is not exactly 365 days long. Instead, it is ever so slightly longer than that. The current mean solar year is 365 days, 5 hours, 48 minutes and 45.19 seconds. Loom can use the solar year length of 365.2421897 days instead of simply 365 days by passing a boolean `true` as the second parameter when using the year methods. By default, Loom uses a flat 365 days to represent a year:
 
 ```php
@@ -218,16 +220,16 @@ time. The aptly name `until()` and `since()` methods are only really useful if y
 PHP `DateTime` object. Both methods return a new Loom object.
 
 ```php
-$loomPast = Loom::make()->fromTime(new \DateTime('now - 5 days'));
-$loomFuture = Loom::make()->fromTime(new \DateTime('now + 10 days'));
+$loomPast = Loom::make()->fromDateTime(new \DateTime('now - 5 days'));
+$loomFuture = Loom::make()->fromDateTime(new \DateTime('now + 10 days'));
 
 var_dump($loomPast->since()->getHours());       // Returns 120.
 var_dump($loomFuture->until()->getHours());     // Returns 240.
 ```
 
 The `since()` and `until()` methods simply do a `diff()` on the two Loom objects, and since the `diff()` method will
-always return a positive number, the `since()` and `until()` methods are actually identical. They exist simply to help
-make your code a little more readable.
+always return a positive number, the `since()` and `until()` methods are actually identical. They exist simply to help make your code a little more readable.
+
 
 ### Comparisons
 
@@ -259,7 +261,7 @@ $loom1->lte($loom2);		// true
 Here it _is_ important which object you call the comparison methods on. The object you call on is always on the left of the equasion.
 
 ### Between
-Loom also provides a way to check if a unit falls between two other units. The `isBetween` method takes two Loom objects which means you can use any of the creation methods:
+Loom provides a way to check if a unit falls between two other units. The `isBetween` method takes two Loom objects which means you can use any of the creation methods:
 
 ```php
 $loom = Loom::make()->fromSeconds(100);
@@ -273,6 +275,8 @@ if ($loom->isBetween(
 
 The `isBetween` method is also accepts a second boolean parameter to specify if the the limits should be inclusive or exclusive. By default, `isBetween` is exclusive of the limits. In otherwords, if the value you are checking is equal to the upper limit, the result will be `false`.
 
+You can get `isBetween` to include the limits in the comparrison by passing a boolean `true` as the third parameter:
+
 ```php
 $loom = Loom::make()->fromSeconds(120);
 
@@ -285,15 +289,16 @@ var_dump($loom->isBetween(
 // Inclusive. Returns true.
 var_dump($loom->isBetween(
 	Loom::make()->fromMinutes(1),
-	Loom::make()->fromMinutes(2)
-), true);
+	Loom::make()->fromMinutes(2),
+	true
+));
 
 ```
 
 
 ### Simple Arithmetic
 
-You can also perform some simple arithmetic through the `add()` and `sub()` methods:
+You can perform some simple arithmetic through the `add()` and `sub()` methods:
 
 ```php
 	$loom = Loom::make()->fromMinutes(2);
@@ -306,7 +311,7 @@ You can also perform some simple arithmetic through the `add()` and `sub()` meth
 
 A `Loom` object can never have a negative value. Subtracting a larger Loom from a smaller one will always result in 0.
 
-The arithmetic methods also accept an instance of `AbstractUnit`, so you don't need to create another `Loom` object. You can just pass the unit into the methods:
+The arithmetic methods will accept an instance of `AbstractUnit`, so you don't need to create another `Loom` object. You can just pass the unit into the methods:
 
 ```php
 	$loom = Loom::make()->fromMinutes(2);
