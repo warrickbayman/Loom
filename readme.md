@@ -1,7 +1,6 @@
 # Loom
 [![Build Status](https://img.shields.io/travis/warrickbayman/Loom.svg?style=flat-square)](https://travis-ci.org/warrickbayman/Loom)
 [![Stable](https://img.shields.io/github/release/warrickbayman/loom.svg?style=flat-square&label=stable)](https://github.com/warrickbayman/loom)
-[![Unstable](https://img.shields.io/badge/unstable-dev--develop-red.svg?style=flat-square)](https://github.com/warrickbayman/Loom/tree/develop)
 [![License](http://img.shields.io/packagist/l/warrickbayman/loom.svg?style=flat-square)](http://opensource.org/licenses/mit)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/02b6ee54-c786-4de4-b387-38defe63f142/small.png)](https://insight.sensiolabs.com/projects/02b6ee54-c786-4de4-b387-38defe63f142)
