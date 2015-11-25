@@ -99,7 +99,9 @@ class LoomCollectionTest extends TestCase
         ]);
 
         $this->assertEquals(60, $collection->shortest()->getSeconds());
+        $this->assertEquals($collection->shortest()->getSeconds(), $collection->earliest()->getSeconds());
         $this->assertEquals(5 * 60, $collection->longest()->getSeconds());
+        $this->assertEquals($collection->longest()->getSeconds(), $collection->latest()->getSeconds());
     }
 
     /** @test */
@@ -142,5 +144,13 @@ class LoomCollectionTest extends TestCase
         ]);
 
         $this->assertEquals(3 * 60, $collection[3 * 60 * 1000]->getSeconds());
+
+        $collection[] = \Loom\Loom::make()->fromMinutes(6);
+
+        $this->assertEquals(6 * 60, $collection->last()->getSeconds());
+
+        unset($collection[2 * 60 * 1000]);
+
+        $this->assertEquals(5, $collection->count());
     }
 }

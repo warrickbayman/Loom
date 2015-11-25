@@ -198,4 +198,14 @@ class LoomTest extends TestCase
         $loom->add(Loom::make()->fromSeconds(1));
         $this->assertEquals(2000000, $loom->getMicroseconds());
     }
+
+    /** @test */
+    public function it_can_make_a_copy()
+    {
+        $loom = Loom::make()->fromMinutes(2);
+
+        $secondLoom = Loom::make()->fromLoom($loom);
+
+        $this->assertEquals($loom, $secondLoom);
+    }
 }

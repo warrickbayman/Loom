@@ -39,4 +39,10 @@ class Loom extends AbstractLoom implements LoomInterface
     {
         return new LoomFactory();
     }
+
+
+    public static function makeRange()
+    {
+        return new LoomRangeFactory();
+    }
 }

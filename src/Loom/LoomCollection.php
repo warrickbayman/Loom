@@ -2,6 +2,7 @@
 
 namespace Loom;
 use Loom\Contracts\LoomCollectionInterface;
+use Loom\Exceptions\InvalidObjectType;
 
 /**
  * Loom
@@ -18,13 +19,18 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
 
 
     /**
-     * LoomCollection constructor.
+     * Create a new Loom from an array of Loom objects
      *
      * @param array $items
+     *
+     * @throws InvalidObjectType
      */
     public function __construct(array $items = [])
     {
         foreach ($items as $item) {
+            if (get_class($item) !== Loom::class) {
+                throw new InvalidObjectType('LoomCollection can only contain Loom objects');
+            }
             $this->items[$item->getMilliseconds()] = $item;
         }
     }
@@ -35,15 +41,9 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
      *
      * @link  http://php.net/manual/en/arrayaccess.offsetexists.php
      *
-     * @param mixed $offset <p>
-     *                      An offset to check for.
-     *                      </p>
+     * @param mixed $offset
      *
      * @return boolean true on success or false on failure.
-     * </p>
-     * <p>
-     * The return value will be casted to boolean if non-boolean was returned.
-     * @since 5.0.0
      */
     public function offsetExists($offset)
     {
@@ -53,12 +53,11 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
 
     /**
      * Offset to retrieve
+     *
      * @link  http://php.net/manual/en/arrayaccess.offsetget.php
-     * @param mixed $offset <p>
-     *                      The offset to retrieve.
-     *                      </p>
-     * @return mixed Can return all value types.
-     * @since 5.0.0
+     *
+     * @param int $offset
+     * @return Loom
      */
     public function offsetGet($offset)
     {
@@ -68,22 +67,23 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
 
     /**
      * Offset to set
+     *
      * @link  http://php.net/manual/en/arrayaccess.offsetset.php
-     * @param mixed $offset <p>
-     *                      The offset to assign the value to.
-     *                      </p>
-     * @param mixed $value  <p>
-     *                      The value to set.
-     *                      </p>
-     * @return void
-     * @since 5.0.0
+     *
+     * @param mixed $offset
+     * @param Loom  $value
+     *
+     * @throws InvalidObjectType
      */
     public function offsetSet($offset, $value)
     {
-        if (is_null($offset)) {
-            $this->items[] = $value;
+        if (is_null($value)) {
+            $this->offsetUnset($offset);
         } else {
-            $this->items[$offset] = $value;
+            if (get_class($value) !== Loom::class) {
+                throw new InvalidObjectType('LoomCollection can only contain Loom objects');
+            }
+            $this->items[$value->getMilliseconds()] = $value;
         }
     }
 

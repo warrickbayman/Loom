@@ -174,7 +174,7 @@ abstract class AbstractLoomFactory implements LoomFactoryInterface
      *
      * @return Loom
      */
-    public function copy(Loom $loom)
+    public function fromLoom(Loom $loom)
     {
         return $this->createLoom(new Milliseconds($loom->getMilliseconds()));
     }
