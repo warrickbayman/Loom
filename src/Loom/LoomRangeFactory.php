@@ -43,7 +43,8 @@ class LoomRangeFactory
 
         $range = new LoomCollection();
         $startingMilliseconds = $this->from->getMilliseconds();
-        for ($i = $startingMilliseconds; $i <= $this->to->getMilliseconds(); $i += $stepSize) {
+        $endingMilliseconds = $this->to->getMilliseconds();
+        for ($i = $startingMilliseconds; $i <= $endingMilliseconds; $i += $stepSize) {
             $range->push(Loom::make()->fromMilliseconds($i));
         }
         return $range;
