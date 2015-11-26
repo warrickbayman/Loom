@@ -199,13 +199,14 @@ class LoomTest extends TestCase
         $this->assertEquals(2000000, $loom->getMicroseconds());
     }
 
+
     /** @test */
-    public function it_can_make_a_copy()
+    public function it_can_get_a_new_datetime()
     {
-        $loom = Loom::make()->fromMinutes(2);
+        $loom = Loom::make()->fromDateTime(new DateTime('now'));
+        $loom->add(Loom::make()->fromDays(2));
+        $dateTime = $loom->getDateTime();
 
-        $secondLoom = Loom::make()->fromLoom($loom);
-
-        $this->assertEquals($loom, $secondLoom);
+        $this->assertEquals((new DateTime('now + 2 days'))->format('d'), $dateTime->format('d'));
     }
 }

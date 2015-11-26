@@ -133,6 +133,19 @@ abstract class AbstractLoom implements GettersInterface, ComparisonsInterface, A
     }
 
 
+
+
+    /**
+     * Get a new DateTime instance
+     *
+     * @return \DateTime
+     */
+    public function getDateTime()
+    {
+        return new \DateTime('@' . $this->getSeconds());
+    }
+
+
     /* -----------------------------------------------------------------------------------------------------------------
      * Comparisons
      * -----------------------------------------------------------------------------------------------------------------
