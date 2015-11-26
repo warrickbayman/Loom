@@ -348,6 +348,23 @@ $loom = $collection->pop();
 $loom = $collection->shift();
 ```
 
+### Finding
+Loom provides a simple way to grab single Loom objects from the collection. You can always get the first Loom object by using the `first()` method. In the same manner, the `last()` method will always return the last object in the collection.
+
+```php
+$first = $collection->first();
+$last = $collection->last();
+```
+
+Unlike `pop()` and `shift()`, these methods do not alter the collection and only return the Loom object.
+
+Sometimes, you might need to get the shortest, or longest Loom object. You can use the `shortest()` and `longest()` methods to do just that. There is also an `earliest()` method, which is just an alias for `shortest`, and a `latest()`, which is an alias for `longest`.
+
+```php
+$shortest = $collection->shortest();
+$longest = $collection->longest();
+```
+
 ### Filtering
 No collections class would be complete without the ability to filter the contents of a collection. The best place to start is the `filter` method which accepts a closure. The Loom objects are passed as parameters to the closure. If the closure returns a boolean `true` then that object is included in the filtered results:
 
@@ -391,6 +408,21 @@ $newCollection = $collection->each(function(Loom $loom)
 The collection can also be sorted using the appropriately named `sort()` method. By default `sort()` will sort the collection ascending (smallest Loom first), but you can invert the sort by passing a boolean `true` as parameter.
 
 ```php
+// Ascending
 $sorted = $collection->sort();
+
+// Descending
+$sorted = $collection->sort(true);
 ```
 
+## Ranges
+Loom provides an interesting feature which allows you to create a range of Loom objects. Ranges are always returned as Loom Collections. Creating a range is fairly simple. Instead of calling the `make()` static method, there is now a `makeRange()` static method on the `Loom` class. You can pass a single Loom object to the `from()` method, and one to the `to()` method. The `steps()` method takes an integer parameter and returns a new `LoomCollection` instance:
+
+```php
+$range = Loom::makeRange()
+    ->from(Loom::make()->fromSeconds(1))
+    ->to(Loom::make()->fromSeconds(10))
+    ->steps(10);
+```
+
+This will return a new `LoomCollection` consisting of 10 Loom objects. The first one being 1 seconds, and the last one being 10 seconds.
