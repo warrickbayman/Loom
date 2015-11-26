@@ -198,4 +198,15 @@ class LoomTest extends TestCase
         $loom->add(Loom::make()->fromSeconds(1));
         $this->assertEquals(2000000, $loom->getMicroseconds());
     }
+
+
+    /** @test */
+    public function it_can_get_a_new_datetime()
+    {
+        $loom = Loom::make()->fromDateTime(new DateTime('now'));
+        $loom->add(Loom::make()->fromDays(2));
+        $dateTime = $loom->getDateTime();
+
+        $this->assertEquals((new DateTime('now + 2 days'))->format('d'), $dateTime->format('d'));
+    }
 }
