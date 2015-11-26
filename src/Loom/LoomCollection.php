@@ -31,7 +31,7 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
             if (get_class($item) !== Loom::class) {
                 throw new InvalidObjectType('LoomCollection can only contain Loom objects');
             }
-            $this->items[$item->getMilliseconds()] = $item;
+            $this->items[] = $item;
         }
     }
 
@@ -83,7 +83,11 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
             if (get_class($value) !== Loom::class) {
                 throw new InvalidObjectType('LoomCollection can only contain Loom objects');
             }
-            $this->items[$value->getMilliseconds()] = $value;
+            if (is_null($offset)) {
+                $this->items[] = $value;
+            } else {
+                $this->items[$offset] = $value;
+            }
         }
     }
 
@@ -99,7 +103,7 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
      */
     public function offsetUnset($offset)
     {
-        unset($this->items[$offset]);
+        array_splice($this->items, $offset, 1);
     }
 
 
@@ -140,14 +144,15 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
      *
      * @param Loom $start
      * @param Loom $end
+     * @param bool $inclusive
      *
      * @return LoomCollectionInterface
      */
-    public function between(Loom $start, Loom $end)
+    public function between(Loom $start, Loom $end, $inclusive = false)
     {
-        return $this->filter(function(Loom $a) use ($start, $end)
+        return $this->filter(function(Loom $a) use ($start, $end, $inclusive)
         {
-            return $a->isBetween($start, $end);
+            return $a->isBetween($start, $end, $inclusive);
         });
     }
 
@@ -283,7 +288,7 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
      */
     public function push(Loom $loom)
     {
-        $this->items[$loom->getMilliseconds()] = $loom;
+        $this->items[] = $loom;
         return $this;
     }
 
@@ -322,12 +327,17 @@ class LoomCollection implements LoomCollectionInterface, \ArrayAccess, \Countabl
         $results = [];
 
         foreach ($this->items as $key => $value) {
-            $results[$value->getMilliseconds()] = $value;
+            $results[] = $value->getMilliseconds();
         }
 
-        $descending ? krsort($results) : ksort($results);
+        $descending ? arsort($results) : asort($results);
+        $sorted = [];
+        foreach ($results as $index => $ms) {
+            $sorted[] = Loom::make()->fromMilliseconds($ms);
+        }
 
-        return new static($results);
+        $this->items = $sorted;
+        return $this;
     }
 
 

@@ -39,10 +39,11 @@ interface LoomCollectionInterface
      *
      * @param Loom $start
      * @param Loom $end
+     * @param bool $inclusive
      *
      * @return LoomCollectionInterface
      */
-    public function between(Loom $start, Loom $end);
+    public function between(Loom $start, Loom $end, $inclusive = false);
 
 
     /**

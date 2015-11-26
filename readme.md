@@ -320,3 +320,77 @@ The arithmetic methods will accept an instance of `AbstractUnit`, so you don't n
 	$loom->sub(new Loom\Minutes(2));
 	var_dump($loom->getSeconds());		// 60
 ```
+
+
+## Loom Collections
+A new `LoomCollection` class is currently in development and is available on the `develop` branch. Loom Collections are based on the Laravel `Collection` class, but with some _Loomness_ built in.
+
+The new `LoomCollection` class constructor accepts an array of Loom objects, but you can also create an empty collection:
+
+```php
+$collection = new Loom\LoomCollection();
+```
+
+Loom Collections can only contain `Loom` objects. You'll get an exception if you try add anything else.
+
+### Push, Pop, Prepend, Shift
+Manipulating the contents of a `LoomCollection` is quite simple. Use the `push` method to push a new Loom object onto the end of the collection, the `pop` method to pull the last Loom object, the `prepend` method to insert a Loom object onto the beginning of the collection and `shift` to pull the first objct.
+
+```php
+// Add to the end of the collection
+$collection->push(new Loom::make()->fromMinutes(4));
+// Add to the beginning of the collection
+$collection->prepend(new Loom::make()->fromMinutes(10));
+
+// Pull the last object from the collection
+$loom = $collection->pop();
+// Pull the first object from the collection
+$loom = $collection->shift();
+```
+
+### Filtering
+No collections class would be complete without the ability to filter the contents of a collection. The best place to start is the `filter` method which accepts a closure. The Loom objects are passed as parameters to the closure. If the closure returns a boolean `true` then that object is included in the filtered results:
+
+```php
+$filtered = $collection->filter(function(Loom $loom)
+{
+    return $loom->gt(Loom::make()->fromMinutes(6);
+});
+```
+
+However, Loom also includes a few extra filter methods that make this process easier. The `after()` method will return all the Loom objects that occure after the specified Loom, and the `before()` method will return lla the objects that occure before the specified Loom.
+
+```php
+// After
+$newCollection = $collection->after(Loom::make()->fromMinutes(8));
+
+// Before
+$newCollection = $collection->before(Loom::make()->fromMinutes(6));
+```
+
+There is also a `between()` method that will return objects that occure between the specified start and end Looms.
+
+```php
+$newCollection = $collection->between(
+    Loom::make()->fromMinutes(5),
+    Loom::make()->fromHours(1)
+);    
+```
+
+### Iterating
+The `LoomCollection` class also includes an `each()` method which accepts a closure to which is passed each Loom in the collection.
+
+```php
+$newCollection = $collection->each(function(Loom $loom)
+{
+    echo $loom->getMinutes();
+});
+```
+
+### Sorting
+The collection can also be sorted using the appropriately named `sort()` method. By default `sort()` will sort the collection ascending (smallest Loom first), but you can invert the sort by passing a boolean `true` as parameter.
+
+```php
+$sorted = $collection->sort();
+```
+
