@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/warrickbayman/Loom.svg)](https://travis-ci.org/warrickbayman/Loom)
 [![Stable](https://poser.pugx.org/warrickbayman/loom/v/stable.svg)](https://packagist.org/packages/warrickbayman/loom)
 [![Latest Unstable Version](https://poser.pugx.org/warrickbayman/loom/v/unstable)](https://packagist.org/packages/warrickbayman/loom)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/warrickbayman/Loom.svg)](https://scrutinizer-ci.com/g/warrickbayman/Loom/?branch=master)
 [![License](https://poser.pugx.org/warrickbayman/loom/license)](https://packagist.org/packages/warrickbayman/loom)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/77e1616d-b220-4031-9a74-45dbe9258d1d/small.png)](https://insight.sensiolabs.com/projects/77e1616d-b220-4031-9a74-45dbe9258d1d)
