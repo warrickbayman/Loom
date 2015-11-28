@@ -320,3 +320,109 @@ The arithmetic methods will accept an instance of `AbstractUnit`, so you don't n
 	$loom->sub(new Loom\Minutes(2));
 	var_dump($loom->getSeconds());		// 60
 ```
+
+
+## Loom Collections
+A new `LoomCollection` class is currently in development and is available on the `develop` branch. Loom Collections are based on the Laravel `Collection` class, but with some _Loomness_ built in.
+
+The new `LoomCollection` class constructor accepts an array of Loom objects, but you can also create an empty collection:
+
+```php
+$collection = new Loom\LoomCollection();
+```
+
+Loom Collections can only contain `Loom` objects. You'll get an exception if you try add anything else.
+
+### Push, Pop, Prepend, Shift
+Manipulating the contents of a `LoomCollection` is quite simple. Use the `push` method to push a new Loom object onto the end of the collection, the `pop` method to pull the last Loom object, the `prepend` method to insert a Loom object onto the beginning of the collection and `shift` to pull the first objct.
+
+```php
+// Add to the end of the collection
+$collection->push(new Loom::make()->fromMinutes(4));
+// Add to the beginning of the collection
+$collection->prepend(new Loom::make()->fromMinutes(10));
+
+// Pull the last object from the collection
+$loom = $collection->pop();
+// Pull the first object from the collection
+$loom = $collection->shift();
+```
+
+### Finding
+Loom provides a simple way to grab single Loom objects from the collection. You can always get the first Loom object by using the `first()` method. In the same manner, the `last()` method will always return the last object in the collection.
+
+```php
+$first = $collection->first();
+$last = $collection->last();
+```
+
+Unlike `pop()` and `shift()`, these methods do not alter the collection and only return the Loom object.
+
+Sometimes, you might need to get the shortest, or longest Loom object. You can use the `shortest()` and `longest()` methods to do just that. There is also an `earliest()` method, which is just an alias for `shortest`, and a `latest()`, which is an alias for `longest`.
+
+```php
+$shortest = $collection->shortest();
+$longest = $collection->longest();
+```
+
+### Filtering
+No collections class would be complete without the ability to filter the contents of a collection. The best place to start is the `filter` method which accepts a closure. The Loom objects are passed as parameters to the closure. If the closure returns a boolean `true` then that object is included in the filtered results:
+
+```php
+$filtered = $collection->filter(function(Loom $loom)
+{
+    return $loom->gt(Loom::make()->fromMinutes(6);
+});
+```
+
+However, Loom also includes a few extra filter methods that make this process easier. The `after()` method will return all the Loom objects that occure after the specified Loom, and the `before()` method will return lla the objects that occure before the specified Loom.
+
+```php
+// After
+$newCollection = $collection->after(Loom::make()->fromMinutes(8));
+
+// Before
+$newCollection = $collection->before(Loom::make()->fromMinutes(6));
+```
+
+There is also a `between()` method that will return objects that occure between the specified start and end Looms.
+
+```php
+$newCollection = $collection->between(
+    Loom::make()->fromMinutes(5),
+    Loom::make()->fromHours(1)
+);    
+```
+
+### Iterating
+The `LoomCollection` class also includes an `each()` method which accepts a closure to which is passed each Loom in the collection.
+
+```php
+$newCollection = $collection->each(function(Loom $loom)
+{
+    echo $loom->getMinutes();
+});
+```
+
+### Sorting
+The collection can also be sorted using the appropriately named `sort()` method. By default `sort()` will sort the collection ascending (smallest Loom first), but you can invert the sort by passing a boolean `true` as parameter.
+
+```php
+// Ascending
+$sorted = $collection->sort();
+
+// Descending
+$sorted = $collection->sort(true);
+```
+
+## Ranges
+Loom provides an interesting feature which allows you to create a range of Loom objects. Ranges are always returned as Loom Collections. Creating a range is fairly simple. Instead of calling the `make()` static method, there is now a `makeRange()` static method on the `Loom` class. You can pass a single Loom object to the `from()` method, and one to the `to()` method. The `steps()` method takes an integer parameter and returns a new `LoomCollection` instance:
+
+```php
+$range = Loom::makeRange()
+    ->from(Loom::make()->fromSeconds(1))
+    ->to(Loom::make()->fromSeconds(10))
+    ->steps(10);
+```
+
+This will return a new `LoomCollection` consisting of 10 Loom objects. The first one being 1 seconds, and the last one being 10 seconds.

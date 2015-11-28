@@ -82,4 +82,12 @@ interface GettersInterface
      * @return float
      */
     public function getYears($solar = false);
+
+
+    /**
+     * Get a new DateTime instance
+     *
+     * @return \DateTime
+     */
+    public function getDateTime();
 }
