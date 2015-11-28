@@ -1,9 +1,11 @@
 # Loom
-[![Build Status](https://img.shields.io/travis/warrickbayman/Loom.svg?style=flat-square)](https://travis-ci.org/warrickbayman/Loom)
-[![Stable](https://img.shields.io/github/release/warrickbayman/loom.svg?style=flat-square&label=stable)](https://github.com/warrickbayman/loom)
-[![License](http://img.shields.io/packagist/l/warrickbayman/loom.svg?style=flat-square)](http://opensource.org/licenses/mit)
+[![Build Status](https://travis-ci.org/warrickbayman/Loom.svg?branch=1.1)](https://travis-ci.org/warrickbayman/Loom)
+[![Stable](https://poser.pugx.org/warrickbayman/loom/v/stable.svg)](https://packagist.org/packages/warrickbayman/loom)
+[![Latest Unstable Version](https://poser.pugx.org/warrickbayman/loom/v/unstable)](https://packagist.org/packages/warrickbayman/loom)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/warrickbayman/Loom.svg?branch=1.1)](https://scrutinizer-ci.com/g/warrickbayman/Loom/?branch=1.1)
+[![License](https://poser.pugx.org/warrickbayman/loom/license)](https://packagist.org/packages/warrickbayman/loom)
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/02b6ee54-c786-4de4-b387-38defe63f142/small.png)](https://insight.sensiolabs.com/projects/02b6ee54-c786-4de4-b387-38defe63f142)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/77e1616d-b220-4031-9a74-45dbe9258d1d/small.png)](https://insight.sensiolabs.com/projects/77e1616d-b220-4031-9a74-45dbe9258d1d)
 
 Loom is a super simple way to work with units of time (hours, minutes, seconds, etc).
 
