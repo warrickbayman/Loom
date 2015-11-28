@@ -130,4 +130,14 @@ interface LoomFactoryInterface
      * @return Loom
      */
     public function copy(Loom $loom);
+
+
+    /**
+     * Make a copy of the Loom object
+     *
+     * @param Loom $loom
+     *
+     * @return mixed
+     */
+    public function fromLoom(Loom $loom);
 }
