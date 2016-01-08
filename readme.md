@@ -108,6 +108,10 @@ $loomFactory->fromMonths($months);
 $loomFactory->fromYears($years);
 ```
 
+There is also a `fromLoom()` method which creates a new instance of the `Loom` object passed as a paramter.
+
+__Note:__ that the `fromLoom()` used to be named `copy()` but was never documented. Just in case, I've deprecated the `copy()` method until the next major release.
+
 ### Using DateTime
 
 The `LoomFactory` object also provides a `fromDateTime` method which allows you to create a Loom object from a `DateTime` object.

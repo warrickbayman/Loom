@@ -171,8 +171,22 @@ abstract class AbstractLoomFactory implements LoomFactoryInterface
      * Make a copy of a Loom object
      *
      * @param Loom $loom
+     * @deprecated 1.1
      *
      * @return Loom
+     */
+    public function fromLoom(Loom $loom)
+    {
+        return $this->fromLoom($loom);
+    }
+
+
+    /**
+     * Make a copy of the Loom object
+     *
+     * @param Loom $loom
+     *
+     * @return mixed
      */
     public function fromLoom(Loom $loom)
     {
