@@ -1,4 +1,5 @@
 # Loom
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bc35d450a978435b90cbacf349bd326c)](https://www.codacy.com/app/warrickbayman/Loom?utm_source=github.com&utm_medium=referral&utm_content=warrickbayman/Loom&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/warrickbayman/Loom.svg?branch=1.1)](https://travis-ci.org/warrickbayman/Loom)
 [![Stable](https://poser.pugx.org/warrickbayman/loom/v/stable.svg)](https://packagist.org/packages/warrickbayman/loom)
 [![Latest Unstable Version](https://poser.pugx.org/warrickbayman/loom/v/unstable)](https://packagist.org/packages/warrickbayman/loom)
